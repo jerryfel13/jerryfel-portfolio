@@ -165,12 +165,7 @@ export default function Home() {
                 download
                 className="inline-block mt-4"
               >
-                <Button
-                  variant="outline"
-                  className="bg-transparent border-white hover:bg-white hover:text-gray-900"
-                >
-                  Download Resume
-                </Button>
+                
               </a>
             </SlideInRight>
           </div>
