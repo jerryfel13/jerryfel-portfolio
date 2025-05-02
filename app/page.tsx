@@ -134,8 +134,81 @@ export default function Home() {
         <section className="relative bg-gradient-to-r from-gray-900 to-gray-800 text-white py-20">
           <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center">
             <SlideInLeft className="md:w-1/2 mb-10 md:mb-0 flex justify-center md:justify-start">
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                <Image src="/images/jerryfel.jpg?height=300&width=300" alt="Jerryfel Laraga" fill className="object-cover" />
+              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-full h-full">
+                    <motion.div
+                      className="absolute inset-0 flex items-center justify-center"
+                      animate={{
+                        rotate: 360,
+                      }}
+                      transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <div className="absolute w-32 h-32 rounded-full border-2 border-white/20">
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
+                          <Code className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                          <Server className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+                          <Database className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2">
+                          <Award className="h-6 w-6 text-white" />
+                        </div>
+                      </div>
+                    </motion.div>
+                    <motion.div
+                      className="absolute inset-0 flex items-center justify-center"
+                      animate={{
+                        rotate: -360,
+                      }}
+                      transition={{
+                        duration: 15,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <div className="absolute w-24 h-24 rounded-full border-2 border-white/20">
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
+                          <span className="text-white text-xs">React</span>
+                        </div>
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                          <span className="text-white text-xs">Node.js</span>
+                        </div>
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+                          <span className="text-white text-xs">DAML</span>
+                        </div>
+                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2">
+                          <span className="text-white text-xs">AWS</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <motion.div
+                          animate={{
+                            scale: [1, 1.1, 1],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          <span className="text-2xl md:text-3xl font-bold text-white">Full Stack</span>
+                          <br />
+                          <span className="text-xl md:text-2xl text-white">Developer</span>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </SlideInLeft>
             <SlideInRight className="md:w-1/2 text-center md:text-left">
