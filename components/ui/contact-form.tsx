@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ScaleOnHover } from "@/components/animations"
 import emailjs from '@emailjs/browser'
 
+// Initialize EmailJS with your public key
 const PUBLIC_KEY = 'mhcDa2PXC1i5EDgUV'
 const SERVICE_ID = 'service_4re5syg'
 const TEMPLATE_ID = 'template_16nfbyd'
@@ -13,9 +14,9 @@ emailjs.init(PUBLIC_KEY)
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    title: ''
+    from_name: '',
+    from_email: '',
+    message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -35,6 +36,12 @@ export function ContactForm() {
 
     try {
       const form = e.target as HTMLFormElement
+      console.log('Form data:', {
+        service_id: SERVICE_ID,
+        template_id: TEMPLATE_ID,
+        form: form
+      })
+
       await emailjs.sendForm(
         SERVICE_ID,
         TEMPLATE_ID,
@@ -42,7 +49,7 @@ export function ContactForm() {
       )
 
       setSubmitStatus('success')
-      setFormData({ name: '', email: '', title: '' })
+      setFormData({ from_name: '', from_email: '', message: '' })
     } catch (error) {
       console.error('Error sending email:', error)
       setSubmitStatus('error')
@@ -53,6 +60,9 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <input type="hidden" name="to_email" value="fellaraga@gmail.com" />
+      <input type="hidden" name="to_name" value="Jerry" />
+      
       <div className="grid grid-cols-1 gap-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-1">
@@ -60,9 +70,9 @@ export function ContactForm() {
           </label>
           <input
             id="name"
-            name="name"
+            name="from_name"
             type="text"
-            value={formData.name}
+            value={formData.from_name}
             onChange={handleChange}
             className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
             placeholder="Your Name"
@@ -74,22 +84,22 @@ export function ContactForm() {
           </label>
           <input
             id="email"
-            name="email"
+            name="from_email"
             type="email"
-            value={formData.email}
+            value={formData.from_email}
             onChange={handleChange}
             className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
             placeholder="Your Email"
           />
         </div>
         <div>
-          <label htmlFor="title" className="block text-sm font-medium mb-1">
+          <label htmlFor="message" className="block text-sm font-medium mb-1">
             Your Message
           </label>
           <textarea
-            id="title"
-            name="title"
-            value={formData.title}
+            id="message"
+            name="message"
+            value={formData.message}
             onChange={handleChange}
             rows={4}
             className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
