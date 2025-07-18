@@ -39,7 +39,6 @@ export default function Navbar() {
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Blog", href: "#blog" },
-    { name: "Testimonials", href: "#testimonials" },
     { name: "Education", href: "#education" },
     { name: "Contact", href: "#contact" },
   ]
