@@ -1019,6 +1019,7 @@ function HomeContent() {
                   <p className="text-gray-600 mb-4">
                     Tips for improving serverless function performance and cost...
                   </p>
+                  
                   <a 
                     href="https://docs.aws.amazon.com/wellarchitected/latest/serverless-applications-lens/cost-and-performance-optimization.html"
                     target="_blank" 
