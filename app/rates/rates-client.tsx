@@ -197,7 +197,7 @@ export function RatesClient() {
                 <article
                   key={rate.title}
                   data-rate
-                  className="grid grid-cols-1 items-start gap-3 border-b border-[#0f1714]/12 py-5 opacity-0 translate-y-3 transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:grid-cols-[minmax(10rem,16rem)_1fr_auto] sm:gap-x-8"
+                  className="grid grid-cols-1 items-start gap-3 border-b border-[#0f1714]/12 py-5 opacity-0 translate-y-3 transition duration-700 ease-out sm:grid-cols-[minmax(10rem,16rem)_1fr_auto] sm:gap-x-8"
                 >
                   <h3 className="font-[family-name:var(--font-syne)] text-[1.2rem] font-bold tracking-[-0.01em]">
                     {rate.title}
