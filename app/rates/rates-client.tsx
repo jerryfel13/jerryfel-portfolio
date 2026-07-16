@@ -7,19 +7,19 @@ const coreRates = [
   {
     title: "Hourly",
     desc: "Feature work, AI integrations, consulting, code reviews, and scoped fixes.",
-    price: "$75–$120",
+    price: "$10–$12",
     note: "per hour",
   },
   {
     title: "Day rate",
     desc: "Focused delivery days for builds, architecture, pairing, or AI solution design.",
-    price: "$550–$850",
+    price: "$80–$100",
     note: "per day",
   },
   {
     title: "Landing page",
     desc: "Conversion-focused single page: responsive UI, form/CTA, basic SEO, and handoff.",
-    price: "$1,500–$3,000",
+    price: "$1,000–$1,200",
     note: "per project",
   },
   {

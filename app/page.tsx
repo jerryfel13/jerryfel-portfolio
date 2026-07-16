@@ -659,7 +659,7 @@ function HomeContent() {
               <TimelineItem
                 title="Senior Full Stack Developer"
                 company="Softwave Development"
-                location="Philippines"
+                location="USA"
                 date="June 2026 - Present"
                 bullets={[
                   "Lead end-to-end delivery of full stack web applications and product features",
@@ -671,7 +671,7 @@ function HomeContent() {
               <TimelineItem
                 title="Lead AI Developer"
                 company="Leading with Heart"
-                location="Philippines"
+                location="USA"
                 date="December 2025 - Present"
                 bullets={[
                   "Lead AI solution design and development across product initiatives",
@@ -681,10 +681,22 @@ function HomeContent() {
                 delay={0.05}
               />
               <TimelineItem
+                title="Senior Full Stack Developer"
+                company="Informatics"
+                location="Philippines"
+                date="March 2025 - December 2025"
+                bullets={[
+                  "Frontend & Backend development for the LMS",
+                  "Used Laravel for Backend and React JS TypeScript for Frontend",
+                  "Setup Percipio and Auth0 SSO connection"
+                ]}
+                delay={0.08}
+              />
+              <TimelineItem
                 title="Senior Software Engineer"
                 company="Accenture Japan HUB"
                 location="Japan"
-                date="March 2024 - Present"
+                date="March 2024 - March 2025"
                 bullets={[
                   "Ticket handling on client application",
                   "Responsible for maintenance and development of client application",
