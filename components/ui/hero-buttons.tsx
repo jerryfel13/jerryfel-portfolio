@@ -1,8 +1,9 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { Mail, Github, Linkedin } from "lucide-react"
+import { Mail, Github, Linkedin, CircleDollarSign } from "lucide-react"
 import { StaggerContainer, StaggerItem } from "@/components/animations"
+import Link from "next/link"
 
 export function HeroButtons() {
   return (
@@ -14,6 +15,17 @@ export function HeroButtons() {
           onClick={() => window.location.href = 'mailto:fellaraga@gmail.com'}
         >
           <Mail className="mr-2 h-4 w-4" /> Contact Me
+        </Button>
+      </StaggerItem>
+      <StaggerItem>
+        <Button
+          asChild
+          variant="outline"
+          className="bg-transparent border-white hover:bg-white hover:text-gray-900"
+        >
+          <Link href="/rates">
+            <CircleDollarSign className="mr-2 h-4 w-4" /> View Rates
+          </Link>
         </Button>
       </StaggerItem>
       <StaggerItem>

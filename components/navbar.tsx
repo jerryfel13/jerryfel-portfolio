@@ -11,6 +11,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const isHome = pathname === "/"
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -31,17 +32,21 @@ export default function Navbar() {
     }
   }, [])
 
+  const section = (hash: string) => (isHome ? hash : `/${hash}`)
+
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "GitHub", href: "#github" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Blog", href: "#blog" },
-    { name: "Education", href: "#education" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: section("#about") },
+    { name: "Skills", href: section("#skills") },
+    { name: "Experience", href: section("#experience") },
+    { name: "Projects", href: section("#projects") },
+    { name: "Rates", href: "/rates" },
+    { name: "Contact", href: section("#contact") },
   ]
+
+  const linkClass = `${
+    scrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-200 hover:text-white"
+  } transition-colors`
 
   return (
     <motion.nav
@@ -60,20 +65,21 @@ export default function Navbar() {
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
               >
                 <Link
                   href={link.href}
-                  className={`${
-                    scrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-200 hover:text-white"
-                  } transition-colors`}
+                  className={`${linkClass} ${
+                    pathname === link.href || (link.href === "/rates" && pathname?.startsWith("/rates"))
+                      ? "font-semibold underline underline-offset-4"
+                      : ""
+                  }`}
                 >
                   {link.name}
                 </Link>
@@ -81,7 +87,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Navigation Toggle */}
           <div className="md:hidden">
             <Button
               variant="ghost"
@@ -94,7 +99,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -110,7 +114,7 @@ export default function Navbar() {
                     key={link.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.05 }}
                   >
                     <Link
                       href={link.href}

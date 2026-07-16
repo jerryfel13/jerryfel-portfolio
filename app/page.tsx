@@ -333,7 +333,7 @@ function HomeContent() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Jerryfel Laraga</h1>
             <h2 className="text-xl md:text-2xl mb-6 text-gray-300">
               <Typewriter
-                words={["Full Stack Developer", "Blockchain Enthusiast", "Cloud Solution Architect"]}
+                words={["Senior Full Stack Developer", "Lead AI Developer", "Blockchain Enthusiast", "Cloud Solution Architect"]}
                 loop={0}
                 cursor
                 cursorStyle="_"
@@ -343,12 +343,12 @@ function HomeContent() {
               />
             </h2>
             <div className="flex gap-8 justify-center md:justify-start mb-6">
-              <AnimatedStat label="Years Experience" value={6} />
+              <AnimatedStat label="Years Experience" value={8} />
               <AnimatedStat label="Projects" value={18} />
               <AnimatedStat label="Certifications" value={3} />
             </div>
             <p className="text-gray-300 mb-8 max-w-lg">
-              Dedicated and experienced Software Engineer with 6 years of expertise in developing applications.
+              Dedicated and experienced Software Engineer with 8 years of expertise in developing applications.
             </p>
             <HeroButtons />
                           <div className="flex flex-wrap gap-3 justify-center md:justify-start mt-4">
@@ -375,7 +375,7 @@ function HomeContent() {
               <div>
                 <h3 className="text-xl font-semibold mb-4">Who I Am</h3>
                 <p className="text-gray-700 mb-4 text-lg leading-relaxed">
-                  I am a dedicated and experienced Software Engineer with 6 years of expertise in developing applications.
+                  I am a dedicated and experienced Software Engineer with 8 years of expertise in developing applications.
                   My passion for coding and problem-solving has led me to contribute to various software projects,
                   demonstrating my proficiency in designing, building, and maintaining software solutions.
                 </p>
@@ -433,8 +433,17 @@ function HomeContent() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
+                    <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
                       4
+                    </div>
+                    <div>
+                      <h4 className="font-medium mb-1">AI Development</h4>
+                      <p className="text-gray-600 text-sm">Leading AI features, LLM workflows, and intelligent product experiences</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
+                      5
                     </div>
                     <div>
                       <h4 className="font-medium mb-1">Team Leadership</h4>
@@ -648,6 +657,30 @@ function HomeContent() {
             {/* Timeline Start */}
             <div className="relative">
               <TimelineItem
+                title="Senior Full Stack Developer"
+                company="Softwave Development"
+                location="Philippines"
+                date="June 2026 - Present"
+                bullets={[
+                  "Lead end-to-end delivery of full stack web applications and product features",
+                  "Design and implement scalable frontend and backend architectures",
+                  "Partner with stakeholders on technical planning, estimates, and release quality"
+                ]}
+                delay={0}
+              />
+              <TimelineItem
+                title="Lead AI Developer"
+                company="Leading with Heart"
+                location="Philippines"
+                date="December 2025 - Present"
+                bullets={[
+                  "Lead AI solution design and development across product initiatives",
+                  "Build and integrate LLM-powered features into production workflows",
+                  "Guide engineering practices, mentoring, and delivery standards for AI workstreams"
+                ]}
+                delay={0.05}
+              />
+              <TimelineItem
                 title="Senior Software Engineer"
                 company="Accenture Japan HUB"
                 location="Japan"
@@ -658,7 +691,7 @@ function HomeContent() {
                   "Leads team of Developers for PH and Japan Accenture",
                   "One of the representatives to go to Japan or the client country"
                 ]}
-                delay={0}
+                delay={0.1}
               />
               <TimelineItem
                 title="Senior Software Engineer"
@@ -671,7 +704,7 @@ function HomeContent() {
                   "Handled C# automation for the Aspire Enrichment",
                   "Developed UX Design using Power Apps"
                 ]}
-                delay={0.1}
+                delay={0.15}
               />
               <TimelineItem
                 title="Senior Software Engineer/Cloud Solution Architect for Blockchain"
@@ -698,7 +731,7 @@ function HomeContent() {
                   "Developed MyEstimate DevOps Website using PHP and Javascript",
                   "Built and developed DevOps Chatbot using Laravel Framework"
                 ]}
-                delay={0.3}
+                delay={0.25}
               />
               <TimelineItem
                 title="Backend Developer"
@@ -709,7 +742,7 @@ function HomeContent() {
                   "Developed market place website with Crypto Currency using Laravel Framework",
                   "Technologies: PHP, Javascript, MySQL"
                 ]}
-                delay={0.4}
+                delay={0.3}
               />
             </div>
             {/* Timeline End */}
