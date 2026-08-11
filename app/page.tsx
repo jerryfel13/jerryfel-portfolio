@@ -779,7 +779,7 @@ function HomeContent() {
               <AnimatedProjectCard
                 title="Leading with Heart"
                 description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
-                tags={["AI", "Web Platform", "Coaching", "Full Stack"]}
+                tags={["WordPress", "AI", "Web Platform", "Coaching"]}
                 image="/images/projects/leading-with-heart.jpg"
                 delay={0}
                 demoUrl="https://leadingwithheart.com/"
@@ -842,7 +842,7 @@ function HomeContent() {
               <AnimatedProjectCard
                 title="Leading with Heart"
                 description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
-                tags={["AI", "Web Platform", "Coaching", "Full Stack"]}
+                tags={["WordPress", "AI", "Web Platform", "Coaching"]}
                 image="/images/projects/leading-with-heart.jpg"
                 delay={0}
                 demoUrl="https://leadingwithheart.com/"
@@ -877,7 +877,7 @@ function HomeContent() {
               <AnimatedProjectCard
                 title="Leading with Heart"
                 description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
-                tags={["AI", "Web Platform", "Coaching", "Full Stack"]}
+                tags={["WordPress", "AI", "Web Platform", "Coaching"]}
                 image="/images/projects/leading-with-heart.jpg"
                 delay={0}
                 demoUrl="https://leadingwithheart.com/"
