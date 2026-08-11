@@ -274,15 +274,9 @@ function HomeContent() {
         <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center">
           <SlideInLeft className="md:w-1/2 mb-10 md:mb-0 flex justify-center md:justify-start">
             <div className="relative">
-              {/* Profile Photo */}
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                <Image
-                  src="/images/Jerryfel.jpg"
-                  alt="Jerryfel Laraga"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              {/* Initials placeholder — photo temporarily removed */}
+              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                <span className="text-5xl md:text-6xl font-bold text-white tracking-wide">JL</span>
               </div>
               
               {/* Floating Tech Icons */}
