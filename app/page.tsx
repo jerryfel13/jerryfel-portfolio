@@ -777,11 +777,19 @@ function HomeContent() {
 
             <TabsContent value="all" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-stretch">
               <AnimatedProjectCard
+                title="Leading with Heart"
+                description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
+                tags={["AI", "Web Platform", "Coaching", "Full Stack"]}
+                image="/images/projects/leading-with-heart.jpg"
+                delay={0}
+                demoUrl="https://leadingwithheart.com/"
+              />
+              <AnimatedProjectCard
                 title="Informatics Micro Courses"
                 description="Learning platform for Informatics Micro Courses with course discovery, career pathways, and SSO — built with Laravel and React TypeScript, including Percipio and Auth0 integration"
                 tags={["React", "TypeScript", "Laravel", "Auth0", "Full Stack"]}
                 image="/images/projects/imc-informatics.jpg"
-                delay={0}
+                delay={0.1}
                 demoUrl="https://imc.informatics.edu.ph/"
               />
               <AnimatedProjectCard
@@ -789,7 +797,7 @@ function HomeContent() {
                 description="A comprehensive sales and inventory management system with real-time tracking, reporting, and analytics"
                 tags={["React", "Next.js", "TypeScript", "Swagger", "Full Stack"]}
                 image="/images/projects/luxury-ph.jpg"
-                delay={0.1}
+                delay={0.2}
                 demoUrl="https://lwph-sims.vercel.app/"
                 githubUrl="https://github.com/jerryfel13/lwph-sims"
               />
@@ -798,45 +806,53 @@ function HomeContent() {
                 description="A secure trading platform built with DAML and React"
                 tags={["React", "DAML", "Blockchain", "TypeScript"]}
                 image="/images/projects/blockchain-trading.jpg"
-                delay={0.2}
+                delay={0.3}
               />
               <AnimatedProjectCard
                 title="Elastic Search API"
                 description="REST API for Accenture Sites Elastic Search"
                 tags={["Node.js", "Elastic Search", "REST API"]}
                 image="/images/projects/elastic-search.jpg"
-                delay={0.3}
+                delay={0.4}
               />
               <AnimatedProjectCard
                 title="DevOps Chatbot"
                 description="Intelligent chatbot for DevOps automation"
                 tags={["Laravel", "PHP", "AI", "DevOps"]}
                 image="/images/projects/devops-chatbot.jpg"
-                delay={0.4}
+                delay={0.5}
               />
               <AnimatedProjectCard
                 title="Crypto Marketplace"
                 description="E-commerce platform with cryptocurrency integration"
                 tags={["Laravel", "PHP", "MySQL", "Blockchain"]}
                 image="/images/projects/crypto-marketplace.jpg"
-                delay={0.5}
+                delay={0.6}
               />
               <AnimatedProjectCard
                 title="Search Validation Tool"
                 description="Python automation for Elastic Search validation"
                 tags={["Python", "Elastic Search", "Automation"]}
                 image="/images/projects/search-validation.jpg"
-                delay={0.6}
+                delay={0.7}
               />
             </TabsContent>
 
             <TabsContent value="frontend" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-stretch">
               <AnimatedProjectCard
+                title="Leading with Heart"
+                description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
+                tags={["AI", "Web Platform", "Coaching", "Full Stack"]}
+                image="/images/projects/leading-with-heart.jpg"
+                delay={0}
+                demoUrl="https://leadingwithheart.com/"
+              />
+              <AnimatedProjectCard
                 title="Informatics Micro Courses"
                 description="Learning platform for Informatics Micro Courses with course discovery, career pathways, and SSO — built with Laravel and React TypeScript, including Percipio and Auth0 integration"
                 tags={["React", "TypeScript", "Laravel", "Auth0", "Full Stack"]}
                 image="/images/projects/imc-informatics.jpg"
-                delay={0}
+                delay={0.1}
                 demoUrl="https://imc.informatics.edu.ph/"
               />
               <AnimatedProjectCard
@@ -844,7 +860,7 @@ function HomeContent() {
                 description="A comprehensive sales and inventory management system with real-time tracking, reporting, and analytics"
                 tags={["React", "Next.js", "TypeScript", "Swagger", "Full Stack"]}
                 image="/images/projects/luxury-ph.jpg"
-                delay={0.1}
+                delay={0.2}
                 demoUrl="https://lwph-sims.vercel.app/"
                 githubUrl="https://github.com/jerryfel13/lwph-sims"
               />
@@ -853,17 +869,25 @@ function HomeContent() {
                 description="A secure trading platform built with DAML and React"
                 tags={["React", "DAML", "Blockchain", "TypeScript"]}
                 image="/images/projects/blockchain-trading.jpg"
-                delay={0.2}
+                delay={0.3}
               />
             </TabsContent>
 
             <TabsContent value="backend" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-stretch">
               <AnimatedProjectCard
+                title="Leading with Heart"
+                description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
+                tags={["AI", "Web Platform", "Coaching", "Full Stack"]}
+                image="/images/projects/leading-with-heart.jpg"
+                delay={0}
+                demoUrl="https://leadingwithheart.com/"
+              />
+              <AnimatedProjectCard
                 title="Informatics Micro Courses"
                 description="Learning platform for Informatics Micro Courses with course discovery, career pathways, and SSO — built with Laravel and React TypeScript, including Percipio and Auth0 integration"
                 tags={["React", "TypeScript", "Laravel", "Auth0", "Full Stack"]}
                 image="/images/projects/imc-informatics.jpg"
-                delay={0}
+                delay={0.1}
                 demoUrl="https://imc.informatics.edu.ph/"
               />
               <AnimatedProjectCard
@@ -871,7 +895,7 @@ function HomeContent() {
                 description="A comprehensive sales and inventory management system with real-time tracking, reporting, and analytics"
                 tags={["React", "Next.js", "TypeScript", "Swagger", "Full Stack"]}
                 image="/images/projects/luxury-ph.jpg"
-                delay={0.1}
+                delay={0.2}
                 demoUrl="https://lwph-sims.vercel.app/"
                 githubUrl="https://github.com/jerryfel13/lwph-sims"
               />
@@ -880,21 +904,21 @@ function HomeContent() {
                 description="REST API for Accenture Sites Elastic Search"
                 tags={["Node.js", "Elastic Search", "REST API"]}
                 image="/images/projects/elastic-search.jpg"
-                delay={0.2}
+                delay={0.3}
               />
               <AnimatedProjectCard
                 title="Search Validation Tool"
                 description="Python automation for Elastic Search validation"
                 tags={["Python", "Elastic Search", "Automation"]}
                 image="/images/projects/search-validation.jpg"
-                delay={0.3}
+                delay={0.4}
               />
               <AnimatedProjectCard
                 title="DevOps Chatbot"
                 description="Intelligent chatbot for DevOps automation"
                 tags={["Laravel", "PHP", "AI", "DevOps"]}
                 image="/images/projects/devops-chatbot.jpg"
-                delay={0.4}
+                delay={0.5}
               />
             </TabsContent>
 
