@@ -381,7 +381,7 @@ function HomeContent() {
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 text-gray-600 mr-3" />
-                    <span className="text-gray-700">Based in San Pedro, Laguna, Philippines</span>
+                    <span className="text-gray-700">Based in Alabang, Muntinlupa City</span>
                   </div>
                   <div className="flex items-center">
                     <Briefcase className="h-5 w-5 text-gray-600 mr-3" />
@@ -1163,7 +1163,7 @@ function HomeContent() {
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 mr-3 text-gray-400" />
-                    <span>Block 1 lot 94 Hyacinth Street Saint Joseph 9 Barangay Langgam San Pedro Laguna</span>
+                    <span>Alabang, Muntinlupa City</span>
                   </div>
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 mr-3 text-gray-400" />
