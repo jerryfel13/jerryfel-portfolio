@@ -9,8 +9,17 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-  	extend: {
-  		colors: {
+	extend: {
+		fontFamily: {
+			display: ["var(--font-display)", "Outfit", "sans-serif"],
+			body: ["var(--font-body)", "Manrope", "sans-serif"],
+		},
+		colors: {
+			hampus: {
+				bg: "#050505",
+				panel: "#0c0c0c",
+				accent: "#ff5a1f",
+			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

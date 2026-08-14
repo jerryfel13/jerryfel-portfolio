@@ -11,7 +11,7 @@ export function SocialButtons() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full bg-transparent border-gray-700 hover:bg-gray-800"
+          className="rounded-full bg-transparent border-white/30 hover:bg-white/10 hover:text-white"
           onClick={() => window.open('https://github.com/jerryfel13', '_blank')}
         >
           <Github className="h-5 w-5" />
@@ -22,7 +22,7 @@ export function SocialButtons() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full bg-transparent border-gray-700 hover:bg-gray-800"
+          className="rounded-full bg-transparent border-white/30 hover:bg-white/10 hover:text-white"
           onClick={() => window.open('https://www.linkedin.com/in/jerryfel-laraga/', '_blank')}
         >
           <Linkedin className="h-5 w-5" />
@@ -33,7 +33,7 @@ export function SocialButtons() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full bg-transparent border-gray-700 hover:bg-gray-800"
+          className="rounded-full bg-transparent border-white/30 hover:bg-white/10 hover:text-white"
           onClick={() => window.location.href = 'mailto:fellaraga@gmail.com'}
         >
           <Mail className="h-5 w-5" />

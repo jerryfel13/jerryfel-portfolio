@@ -111,7 +111,7 @@ export function ContactForm() {
         <ScaleOnHover>
           <Button 
             type="submit" 
-            className="w-full bg-gray-100 text-gray-900 hover:bg-white"
+            className="w-full rounded-full bg-[#ff5a1f] text-white hover:bg-[#e54e18] hover:text-white"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Sending...' : 'Send Message'}

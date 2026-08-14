@@ -132,80 +132,58 @@ export function RatesClient() {
   }, [])
 
   return (
-    <div className="bg-[#eef3f0] text-[#0f1714]">
-      <header className="relative isolate flex min-h-[100svh] items-end overflow-hidden text-[#f5f8f6]">
-        <div className="absolute inset-0 -z-20" aria-hidden>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=2000&q=80"
-            alt=""
-            className="h-full w-full object-cover [transform:scale(1.04)] animate-[rateHeroZoom_18s_cubic-bezier(0.22,1,0.36,1)_forwards]"
-          />
-        </div>
-        <div
-          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,18,14,0.35)_0%,rgba(8,18,14,0.58)_55%,rgba(8,18,14,0.82)_100%),linear-gradient(90deg,rgba(8,18,14,0.45)_0%,transparent_55%)]"
-          aria-hidden
-        />
-
-        <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))] max-w-xl pb-10 pt-28 md:pb-20">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-[#8fd4b5] opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.05s_forwards]">
-            Rate card
+    <div className="min-h-screen bg-[#050505] text-[#fafafa]">
+      <header className="hero-grid relative flex min-h-[88svh] items-center overflow-hidden">
+        <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))] pt-28 pb-16 text-center md:pb-20">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#ff5a1f] opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.05s_forwards]">
+            What I offer
           </p>
-          <h1 className="mb-4 font-[family-name:var(--font-syne)] text-[clamp(2.75rem,8vw,5.25rem)] font-extrabold leading-[0.95] tracking-[-0.03em] opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.15s_forwards]">
-            Jerryfel Laraga
+          <h1 className="font-display text-[clamp(3.2rem,12vw,7.5rem)] font-extrabold leading-[0.9] tracking-[-0.04em] opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.15s_forwards]">
+            <span className="block text-white">Rate card</span>
+            <span className="mt-2 block text-[#ff5a1f]">SERVICES</span>
           </h1>
-          <p className="mb-7 max-w-md text-[clamp(1.05rem,2.2vw,1.25rem)] font-medium text-[#f5f8f6]/85 opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.32s_forwards]">
-            Senior Full Stack Developer and Lead AI Developer — 8 years building software, websites, and AI-powered products.
+          <p className="mx-auto mt-6 max-w-xl text-[clamp(1rem,2vw,1.2rem)] text-white/70 opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.32s_forwards]">
+            Senior full-stack and lead AI delivery — clear scopes, dependable timelines, and production-ready handoff.
           </p>
-          <div className="flex flex-wrap gap-3 opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.48s_forwards]">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 opacity-0 translate-y-5 animate-[rateRise_0.9s_cubic-bezier(0.22,1,0.36,1)_0.48s_forwards]">
             <a
               href="#rates"
-              className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#f5f8f6] px-5 text-[0.95rem] font-semibold text-[#0f1714] transition hover:-translate-y-0.5 hover:bg-white"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#ff5a1f] px-6 text-sm font-semibold text-white transition hover:bg-[#e54e18]"
             >
               View rates
             </a>
             <Link
               href="/#experience"
-              className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#f5f8f6]/45 px-5 text-[0.95rem] font-semibold text-[#f5f8f6] transition hover:-translate-y-0.5 hover:border-[#f5f8f6] hover:bg-[#f5f8f6]/10"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/80 px-6 text-sm text-white transition hover:border-[#ff5a1f] hover:text-[#ff5a1f]"
             >
               See experience
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#f5f8f6]/45 px-5 text-[0.95rem] font-semibold text-[#f5f8f6] transition hover:-translate-y-0.5 hover:border-[#f5f8f6] hover:bg-[#f5f8f6]/10"
-            >
-              Portfolio
             </Link>
           </div>
         </div>
       </header>
 
       <main>
-        <section id="rates" className="py-16 md:py-24">
+        <section id="rates" className="border-t border-white/10 py-16 md:py-24">
           <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))]">
-            <div className="mb-10 max-w-xl md:mb-12">
-              <h2 className="mb-3 font-[family-name:var(--font-syne)] text-[clamp(1.85rem,4vw,2.6rem)] font-bold leading-tight tracking-[-0.02em]">
-                Core rates
+            <div className="mb-10 max-w-2xl md:mb-14">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#ff5a1f]">Core rates</p>
+              <h2 className="font-display text-[clamp(1.9rem,4vw,3rem)] font-bold leading-tight tracking-[-0.02em]">
+                Clear pricing for the work that ships
               </h2>
-              <p className="text-[1.05rem] text-[#4a5c54]">
-                Priced for senior full-stack and lead AI delivery — clear scopes, dependable timelines, and production-ready handoff.
-              </p>
             </div>
 
-            <div ref={ratesRef} className="border-t border-[#0f1714]/12">
+            <div ref={ratesRef} className="border-t border-white/10">
               {coreRates.map((rate) => (
                 <article
                   key={rate.title}
                   data-rate
-                  className="grid grid-cols-1 items-start gap-3 border-b border-[#0f1714]/12 py-5 opacity-0 translate-y-3 transition duration-700 ease-out sm:grid-cols-[minmax(10rem,16rem)_1fr_auto] sm:gap-x-8"
+                  className="grid grid-cols-1 items-start gap-3 border-b border-white/10 py-6 opacity-0 translate-y-3 transition duration-700 ease-out sm:grid-cols-[minmax(10rem,16rem)_1fr_auto] sm:gap-x-8"
                 >
-                  <h3 className="font-[family-name:var(--font-syne)] text-[1.2rem] font-bold tracking-[-0.01em]">
-                    {rate.title}
-                  </h3>
-                  <p className="max-w-xl text-[0.98rem] text-[#4a5c54]">{rate.desc}</p>
-                  <p className="text-right font-[family-name:var(--font-syne)] text-[1.15rem] font-bold text-[#145c44] sm:whitespace-nowrap">
+                  <h3 className="font-display text-[1.25rem] font-bold tracking-[-0.01em]">{rate.title}</h3>
+                  <p className="max-w-xl text-[0.98rem] text-white/60">{rate.desc}</p>
+                  <p className="text-left font-display text-[1.2rem] font-bold text-[#ff5a1f] sm:text-right sm:whitespace-nowrap">
                     {rate.price}
-                    <span className="mt-0.5 block font-[family-name:var(--font-figtree)] text-[0.8rem] font-medium text-[#4a5c54]">
+                    <span className="mt-0.5 block font-body text-[0.8rem] font-medium text-white/45">
                       {rate.note}
                     </span>
                   </p>
@@ -215,28 +193,32 @@ export function RatesClient() {
           </div>
         </section>
 
-        <section className="bg-[#0f1714] py-16 text-[#f5f8f6] md:py-24">
+        <section className="py-16 md:py-24">
           <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))]">
-            <div className="mb-10 max-w-xl md:mb-12">
-              <h2 className="mb-3 font-[family-name:var(--font-syne)] text-[clamp(1.85rem,4vw,2.6rem)] font-bold leading-tight tracking-[-0.02em]">
+            <div className="mb-10 max-w-2xl md:mb-14">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#ff5a1f]">Packages</p>
+              <h2 className="font-display text-[clamp(1.9rem,4vw,3rem)] font-bold leading-tight tracking-[-0.02em]">
                 Website & product packages
               </h2>
-              <p className="text-[1.05rem] text-[#f5f8f6]/70">
+              <p className="mt-3 max-w-xl text-white/60">
                 Typical engagements packaged so scope and investment stay easy to compare.
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-3">
               {packages.map((pkg) => (
-                <article key={pkg.name} className="border-t border-[#f5f8f6]/20 pt-5">
-                  <h3 className="mb-1 font-[family-name:var(--font-syne)] text-[1.35rem] font-bold">{pkg.name}</h3>
-                  <p className="mb-3 font-[family-name:var(--font-syne)] text-[1.5rem] font-bold text-[#8fd4b5]">{pkg.price}</p>
-                  <p className="mb-4 text-[0.98rem] text-[#f5f8f6]/72">{pkg.blurb}</p>
-                  <ul className="space-y-2">
+                <article
+                  key={pkg.name}
+                  className="rounded-3xl border border-white/10 bg-[#0c0c0c] p-6 md:p-7"
+                >
+                  <h3 className="mb-1 font-display text-[1.35rem] font-bold">{pkg.name}</h3>
+                  <p className="mb-3 font-display text-[1.6rem] font-bold text-[#ff5a1f]">{pkg.price}</p>
+                  <p className="mb-5 text-[0.95rem] text-white/60">{pkg.blurb}</p>
+                  <ul className="space-y-2.5">
                     {pkg.items.map((item) => (
                       <li
                         key={item}
-                        className="relative pl-4 text-[0.95rem] text-[#f5f8f6]/88 before:absolute before:left-0 before:top-[0.55em] before:h-[0.45rem] before:w-[0.45rem] before:bg-[#8fd4b5] before:content-['']"
+                        className="relative pl-4 text-[0.92rem] text-white/80 before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-[#ff5a1f] before:content-['']"
                       >
                         {item}
                       </li>
@@ -248,73 +230,81 @@ export function RatesClient() {
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
+        <section className="border-t border-white/10 py-16 md:py-24">
           <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))]">
             <div className="mb-10 max-w-xl md:mb-12">
-              <h2 className="mb-3 font-[family-name:var(--font-syne)] text-[clamp(1.85rem,4vw,2.6rem)] font-bold leading-tight tracking-[-0.02em]">
-                Working terms
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#ff5a1f]">Working terms</p>
+              <h2 className="font-display text-[clamp(1.9rem,4vw,3rem)] font-bold leading-tight tracking-[-0.02em]">
+                Simple expectations
               </h2>
-              <p className="text-[1.05rem] text-[#4a5c54]">
-                Simple expectations so projects stay clear from kickoff to launch.
-              </p>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 md:gap-x-12">
+            <div className="grid gap-8 sm:grid-cols-2 md:gap-x-12 md:gap-y-10">
               {terms.map((term) => (
                 <article key={term.title}>
-                  <h3 className="mb-1 font-[family-name:var(--font-syne)] text-[1.1rem] font-bold">{term.title}</h3>
-                  <p className="text-[0.98rem] text-[#4a5c54]">{term.body}</p>
+                  <h3 className="mb-2 font-display text-[1.15rem] font-bold">{term.title}</h3>
+                  <p className="text-[0.98rem] text-white/60">{term.body}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="contact" className="border-t border-[#0f1714]/12 py-16 md:py-24">
-          <div className="mx-auto flex w-[min(1120px,calc(100%-2.5rem))] flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className="mb-3 font-[family-name:var(--font-syne)] text-[clamp(1.85rem,4vw,2.6rem)] font-bold leading-tight tracking-[-0.02em]">
-                Let’s build it
-              </h2>
-              <p className="mb-5 max-w-lg text-[#4a5c54]">
-                Share your goals, timeline, and any references — I’ll come back with a clear scope and quote.
-              </p>
-              <div className="space-y-1">
-                <a
-                  href="mailto:fellaraga@gmail.com"
-                  className="block font-semibold text-[#145c44] underline underline-offset-4 hover:text-[#1f7a5c]"
-                >
-                  fellaraga@gmail.com
-                </a>
-                <Link href="/" className="block font-semibold text-[#145c44] underline underline-offset-4 hover:text-[#1f7a5c]">
-                  View full portfolio
-                </Link>
-                <a
-                  href="https://www.linkedin.com/in/jerryfel-laraga/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block font-semibold text-[#145c44] underline underline-offset-4 hover:text-[#1f7a5c]"
-                >
-                  LinkedIn
-                </a>
+        <section id="contact" className="border-t border-white/10 py-16 md:py-24">
+          <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))]">
+            <h2 className="mb-10 text-center font-display text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-[-0.02em]">
+              Let&apos;s connect
+            </h2>
+
+            <div className="grid gap-6 md:grid-cols-2 md:items-stretch">
+              <div className="flex min-h-[220px] items-center justify-center rounded-3xl border border-white/10 bg-[#0c0c0c] p-8">
+                <div className="text-center">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ff5a1f]">Take action</p>
+                  <p className="font-display text-2xl font-bold md:text-3xl">Ready for a conversation?</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-center rounded-3xl border border-white/10 bg-[#0c0c0c] p-8">
+                <p className="mb-6 max-w-md text-white/65">
+                  Share your goals, timeline, and any references — I&apos;ll come back with a clear scope and quote.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="mailto:fellaraga@gmail.com?subject=Project%20inquiry%20—%20Jerryfel%20Laraga"
+                    className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#ff5a1f] px-6 text-sm font-semibold !text-white transition hover:bg-[#e54e18]"
+                  >
+                    Send message
+                  </a>
+                  <Link
+                    href="/#contact"
+                    className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/80 px-6 text-sm text-white transition hover:border-[#ff5a1f] hover:text-[#ff5a1f]"
+                  >
+                    Contact page
+                  </Link>
+                </div>
+                <div className="mt-6 space-y-1 text-sm text-white/55">
+                  <a href="mailto:fellaraga@gmail.com" className="block transition hover:text-[#ff5a1f]">
+                    fellaraga@gmail.com
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/jerryfel-laraga/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block transition hover:text-[#ff5a1f]"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
               </div>
             </div>
-            <a
-              href="mailto:fellaraga@gmail.com?subject=Project%20inquiry%20—%20Jerryfel%20Laraga"
-              className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#1f7a5c] px-5 text-[0.95rem] font-semibold text-[#f5f8f6] transition hover:-translate-y-0.5 hover:bg-[#145c44]"
-            >
-              Email Jerryfel
-            </a>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-[#0f1714]/12 py-6 text-[0.9rem] text-[#4a5c54]">
-        <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))]">
-          <p>
-            © <span id="rate-year" /> Jerryfel Laraga · Software, website & AI development rate card
-          </p>
-        </div>
+      <footer className="border-t border-white/10 py-8 text-center text-sm text-white/50">
+        <p>
+          © <span id="rate-year" /> Jerryfel Laraga · Rate card
+        </p>
       </footer>
 
       <style jsx global>{`
@@ -322,11 +312,6 @@ export function RatesClient() {
           to {
             opacity: 1;
             transform: none;
-          }
-        }
-        @keyframes rateHeroZoom {
-          to {
-            transform: scale(1);
           }
         }
       `}</style>

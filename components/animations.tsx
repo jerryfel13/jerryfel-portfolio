@@ -118,7 +118,7 @@ export const AnimatedHeading = ({ children, className = "" }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className={className}
+      className={`font-display tracking-tight ${className}`}
     >
       {children}
     </motion.h2>

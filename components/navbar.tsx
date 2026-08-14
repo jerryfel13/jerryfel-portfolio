@@ -17,15 +17,8 @@ export default function Navbar() {
   const isHome = pathname === "/"
   const isRates = pathname?.startsWith("/rates")
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
-
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-
+    const handleScroll = () => setScrolled(window.scrollY > 10)
     handleScroll()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -68,125 +61,97 @@ export default function Navbar() {
   const section = (hash: string) => (isHome ? hash : `/${hash}`)
 
   const navLinks = [
-    { name: "Home", href: "/", id: "home" },
-    { name: "About", href: section("#about"), id: "about" },
-    { name: "Skills", href: section("#skills"), id: "skills" },
+    { name: "About me", href: section("#about"), id: "about" },
+    { name: "My work", href: section("#projects"), id: "projects" },
     { name: "Experience", href: section("#experience"), id: "experience" },
-    { name: "Projects", href: section("#projects"), id: "projects" },
     { name: "Rates", href: "/rates", id: "rates" },
-    { name: "Contact", href: section("#contact"), id: "contact" },
   ]
-
-  const inactiveClass = scrolled
-    ? "text-gray-700 hover:text-gray-900"
-    : "text-gray-200 hover:text-white"
-
-  const activeClass = scrolled
-    ? "text-gray-900 font-semibold"
-    : "text-white font-semibold"
 
   const isActive = (id: string) => activeSection === id
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+        scrolled ? "bg-black/80 backdrop-blur-md py-3" : "bg-transparent py-5"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center">
-          <motion.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-            <Link href="/" className={`text-xl font-bold ${scrolled ? "text-gray-900" : "text-white"}`}>
-              JL
-            </Link>
-          </motion.div>
+      <div className="mx-auto flex w-[min(1180px,calc(100%-2rem))] items-center justify-between">
+        <Link href="/" className="font-display text-xl font-extrabold tracking-[0.18em] text-white">
+          JERRYFEL
+        </Link>
 
-          <div className="hidden md:flex space-x-6">
-            {navLinks.map((link, index) => {
-              const active = isActive(link.id)
-              return (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="relative"
-                >
-                  <Link
-                    href={link.href}
-                    className={`pb-1 transition-colors ${active ? activeClass : inactiveClass}`}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    {link.name}
-                  </Link>
-                  {active && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className={`absolute left-0 right-0 -bottom-0.5 h-0.5 rounded-full ${
-                        scrolled ? "bg-gray-900" : "bg-white"
-                      }`}
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </motion.div>
-              )
-            })}
-          </div>
-
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleMenu}
-              className={scrolled ? "text-gray-900" : "text-white"}
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => {
+            const active = isActive(link.id)
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`relative font-body text-sm transition-colors ${
+                  active ? "text-white" : "text-white/70 hover:text-white"
+                }`}
+                aria-current={active ? "page" : undefined}
+              >
+                {link.name}
+                {active && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute -bottom-1 left-0 right-0 h-px bg-[#ff5a1f]"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </Link>
+            )
+          })}
         </div>
 
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 bg-white rounded-lg shadow-lg p-4 absolute left-4 right-4"
-            >
-              <div className="flex flex-col space-y-1">
-                {navLinks.map((link, index) => {
-                  const active = isActive(link.id)
-                  return (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link
-                        href={link.href}
-                        className={`block py-2 px-2 rounded-md ${
-                          active
-                            ? "text-gray-900 font-semibold bg-gray-100"
-                            : "text-gray-700 hover:text-gray-900"
-                        }`}
-                        aria-current={active ? "page" : undefined}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  )
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <Link
+          href={section("#contact")}
+          className="hidden md:inline-flex items-center rounded-full border border-white/80 px-5 py-2 text-sm text-white transition hover:border-[#ff5a1f] hover:text-[#ff5a1f]"
+        >
+          Contact
+        </Link>
+
+        <div className="md:hidden">
+          <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="text-white">
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden mx-4 mt-3 rounded-xl bg-[#0c0c0c] border border-white/10 p-4"
+          >
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`block py-2 px-2 ${isActive(link.id) ? "text-[#ff5a1f]" : "text-white/80"}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Link
+                href={section("#contact")}
+                className="mt-2 inline-flex justify-center rounded-full border border-white/70 px-4 py-2 text-white"
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }

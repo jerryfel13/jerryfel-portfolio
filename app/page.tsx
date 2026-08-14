@@ -18,6 +18,7 @@ import {
   Server,
   Database,
   Award,
+  ChevronDown,
 } from "lucide-react"
 import {
   FadeIn,
@@ -31,6 +32,8 @@ import {
 } from "@/components/animations"
 import { HeroButtons } from "@/components/ui/hero-buttons"
 import { SocialButtons } from "@/components/ui/social-buttons"
+import { ProjectsGrid, type ProjectItem } from "@/components/projects-grid"
+import { ExperienceCarousel, type ExperienceItem } from "@/components/experience-carousel"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { useScroll } from "framer-motion"
@@ -84,23 +87,23 @@ function TimelineItem({ title, company, location, date, bullets, delay = 0 }: {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
-      className="relative pl-8 border-l-2 border-blue-400 mb-12"
+      className="relative pl-8 border-l border-[#ff5a1f]/50 mb-12"
     >
-      <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg">
+      <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-[#ff5a1f] flex items-center justify-center">
         <span className="text-white text-lg font-bold">•</span>
       </div>
       <div className="mb-2">
         <div className="flex items-center mb-1">
-          <h3 className="text-xl font-semibold">{title}</h3>
+          <h3 className="text-xl font-semibold text-white">{title}</h3>
         </div>
-        <div className="flex items-center text-gray-600 mb-1">
+        <div className="flex items-center text-white/50 mb-1">
           <span className="mr-2">{company}</span> | <span className="ml-2">{location}</span>
         </div>
-        <div className="flex items-center text-gray-600">
+        <div className="flex items-center text-white/50">
           <span>{date}</span>
         </div>
       </div>
-      <ul className="list-disc list-inside text-gray-700 space-y-1 ml-4">
+      <ul className="list-disc list-inside text-white/70 space-y-1 ml-4">
         {bullets.map((b, i) => (
           <li key={i}>{b}</li>
         ))}
@@ -246,121 +249,82 @@ function HomeContent() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-gray-700">Loading Portfolio...</h2>
+          <div className="w-16 h-16 border-4 border-[#ff5a1f] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <h2 className="text-xl font-semibold text-white">Loading Portfolio...</h2>
         </motion.div>
       </div>
     )
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      {/* Animated Scroll Progress Bar */}
+    <main className="portfolio-dark min-h-screen bg-[#050505] text-white">
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 z-50"
+        className="fixed top-0 left-0 right-0 h-0.5 bg-[#ff5a1f] z-50"
         style={{ scaleX: scrollY, transformOrigin: '0%' }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: scrollY }}
         transition={{ type: 'spring', stiffness: 100, damping: 30 }}
       />
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-gray-900 to-gray-800 text-white py-20">
-        <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center">
-          <SlideInLeft className="md:w-1/2 mb-10 md:mb-0 flex justify-center md:justify-start">
-            <div className="relative">
-              {/* Initials placeholder — photo temporarily removed */}
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                <span className="text-5xl md:text-6xl font-bold text-white tracking-wide">JL</span>
-              </div>
-              
-              {/* Floating Tech Icons */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg"
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Code className="h-6 w-6 text-white" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center shadow-lg"
-                animate={{
-                  y: [0, 10, 0],
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Server className="h-6 w-6 text-white" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute top-1/2 -right-8 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
-                animate={{
-                  x: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Database className="h-5 w-5 text-white" />
-              </motion.div>
-            </div>
-          </SlideInLeft>
-          <SlideInRight className="md:w-1/2 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Jerryfel Laraga</h1>
-            <h2 className="text-xl md:text-2xl mb-6 text-gray-300">
-              <Typewriter
-                words={["Senior Full Stack Developer", "Lead AI Developer", "Blockchain Enthusiast", "Cloud Solution Architect"]}
-                loop={0}
-                cursor
-                cursorStyle="_"
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1500}
-              />
-            </h2>
-            <div className="flex gap-8 justify-center md:justify-start mb-6">
-              <AnimatedStat label="Years Experience" value={8} />
-              <AnimatedStat label="Projects" value={18} />
-              <AnimatedStat label="Certifications" value={3} />
-            </div>
-            <p className="text-gray-300 mb-8 max-w-lg">
-              Dedicated and experienced Software Engineer with 8 years of expertise in developing applications.
-            </p>
-            <HeroButtons />
-                          <div className="flex flex-wrap gap-3 justify-center md:justify-start mt-4">
-                <Button
-                  variant="default"
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
-                  onClick={() => window.open('/images/projects/Jerryfel Laraga CV.pdf', '_blank')}
-                >
-                  <Briefcase className="mr-2 h-4 w-4" />
-                  Download Resume
-                </Button>
-              </div>
-          </SlideInRight>
+
+      <section className="relative hero-grid min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.55)_100%)]" />
+        <div className="relative z-10 mx-auto w-[min(980px,calc(100%-2rem))] text-center pt-24 pb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="font-display text-2xl md:text-4xl font-semibold mb-4"
+          >
+            Hi, I&apos;m Jerryfel Laraga
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-display text-[clamp(2.6rem,8vw,6.2rem)] font-extrabold leading-[0.9] tracking-tight text-[#ff5a1f] uppercase mb-6"
+          >
+            Full Stack Developer
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.22 }}
+            className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-4"
+          >
+            I build software, websites, and AI products that teams actually ship.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.35 }}
+            className="text-sm uppercase tracking-[0.18em] text-white/50 mb-10"
+          >
+            Based in Alabang, Muntinlupa City
+          </motion.p>
+          <HeroButtons />
+          <div className="mt-5">
+            <button
+              className="text-sm text-white/60 underline underline-offset-4 hover:text-[#ff5a1f]"
+              onClick={() => window.open('/images/projects/Jerryfel Laraga CV.pdf', '_blank')}
+            >
+              Download resume
+            </button>
+          </div>
         </div>
+        <a href="#projects" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center group">
+          <p className="text-sm text-white/70 mb-2">Recent Projects</p>
+          <ChevronDown className="h-10 w-10 mx-auto text-[#ff5a1f] animate-bounce" />
+        </a>
       </section>
 
       {/* About Section */}
-      <section className="py-16 bg-white" id="about">
+      <section className="py-24 bg-[#050505]" id="about">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedHeading className="text-3xl font-bold mb-8 text-center">About Me</AnimatedHeading>
           
@@ -400,7 +364,7 @@ function HomeContent() {
                 <h3 className="text-xl font-semibold mb-4">What I Do</h3>
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
+                    <div className="w-8 h-8 bg-[#ff5a1f] rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
                       1
                     </div>
                     <div>
@@ -409,7 +373,7 @@ function HomeContent() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
+                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
                       2
                     </div>
                     <div>
@@ -418,7 +382,7 @@ function HomeContent() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
+                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
                       3
                     </div>
                     <div>
@@ -427,7 +391,7 @@ function HomeContent() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
+                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
                       4
                     </div>
                     <div>
@@ -436,7 +400,7 @@ function HomeContent() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
+                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
                       5
                     </div>
                     <div>
@@ -452,7 +416,7 @@ function HomeContent() {
       </section>
 
       {/* GitHub Contributions & Pinned Repos Section */}
-      <section className="py-16 bg-white" id="github">
+      <section className="py-24 bg-[#050505]" id="github">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedHeading className="text-3xl font-bold mb-8 text-center">GitHub Activity</AnimatedHeading>
           
@@ -519,7 +483,7 @@ function HomeContent() {
                     <div className="flex justify-between items-center">
                       <span className="text-sm">JavaScript</span>
                       <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
-                        <div className="bg-blue-500 h-2 rounded-full" style={{ width: '80%' }}></div>
+                        <div className="bg-[#ff5a1f] h-2 rounded-full" style={{ width: '80%' }}></div>
                       </div>
                       <span className="text-sm text-gray-600">80%</span>
                     </div>
@@ -540,7 +504,7 @@ function HomeContent() {
                     <div className="flex justify-between items-center">
                       <span className="text-sm">PHP</span>
                       <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
-                        <div className="bg-purple-500 h-2 rounded-full" style={{ width: '50%' }}></div>
+                        <div className="bg-[#ff5a1f]/60 h-2 rounded-full" style={{ width: '50%' }}></div>
                       </div>
                       <span className="text-sm text-gray-600">50%</span>
                     </div>
@@ -560,7 +524,7 @@ function HomeContent() {
       </section>
       
       {/* Skills Section */}
-      <section className="py-16 bg-gray-50" id="skills">
+      <section className="py-24 bg-[#0c0c0c]" id="skills">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedHeading className="text-3xl font-bold mb-8 text-center">Skills</AnimatedHeading>
 
@@ -644,324 +608,183 @@ function HomeContent() {
       </section>
 
       {/* Experience Section */}
-      <section className="py-16 bg-white" id="experience">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedHeading className="text-3xl font-bold mb-8 text-center">Work Experience</AnimatedHeading>
-          <div className="max-w-4xl mx-auto">
-            {/* Timeline Start */}
-            <div className="relative">
-              <TimelineItem
-                title="Senior Full Stack Developer"
-                company="Softwave Development"
-                location="USA"
-                date="June 2026 - Present"
-                bullets={[
-                  "Lead end-to-end delivery of full stack web applications and product features",
-                  "Design and implement scalable frontend and backend architectures",
-                  "Partner with stakeholders on technical planning, estimates, and release quality"
-                ]}
-                delay={0}
-              />
-              <TimelineItem
-                title="Lead AI Developer"
-                company="Leading with Heart"
-                location="USA"
-                date="December 2025 - Present"
-                bullets={[
-                  "Lead AI solution design and development across product initiatives",
-                  "Build and integrate LLM-powered features into production workflows",
-                  "Guide engineering practices, mentoring, and delivery standards for AI workstreams"
-                ]}
-                delay={0.05}
-              />
-              <TimelineItem
-                title="Senior Full Stack Developer"
-                company="Informatics"
-                location="Philippines"
-                date="March 2025 - December 2025"
-                bullets={[
-                  "Frontend & Backend development for the LMS",
-                  "Used Laravel for Backend and React JS TypeScript for Frontend",
-                  "Setup Percipio and Auth0 SSO connection"
-                ]}
-                delay={0.08}
-              />
-              <TimelineItem
-                title="Senior Software Engineer"
-                company="Accenture Japan HUB"
-                location="Japan"
-                date="March 2024 - March 2025"
-                bullets={[
-                  "Ticket handling on client application",
-                  "Responsible for maintenance and development of client application",
-                  "Leads team of Developers for PH and Japan Accenture",
-                  "One of the representatives to go to Japan or the client country"
-                ]}
-                delay={0.1}
-              />
-              <TimelineItem
-                title="Senior Software Engineer"
-                company="Accenture PH COE Search"
-                location="Philippines"
-                date="March 2023 - March 2024"
-                bullets={[
-                  "Maintained the Rest API for the Accenture Sites Elastic Search",
-                  "Developed Automation using Python for Elastic Search Validation of created indices",
-                  "Handled C# automation for the Aspire Enrichment",
-                  "Developed UX Design using Power Apps"
-                ]}
-                delay={0.15}
-              />
-              <TimelineItem
-                title="Senior Software Engineer/Cloud Solution Architect for Blockchain"
-                company="Accenture PH Blockchain"
-                location="Philippines"
-                date="December 2019 - March 2023"
-                bullets={[
-                  "Developed Blockchain Frontend side using Angular and Node.js",
-                  "Certified Daml Developer Associate",
-                  "Instructor for DAML Developer Training (Accenture PH)",
-                  "Worked as the Full Stack developer for the project that leveraged DAML for the backend and React JS for frontend system on an Agile approach",
-                  "Led Front end Team with Agile Scrum"
-                ]}
-                delay={0.2}
-              />
-              <TimelineItem
-                title="Software Engineer/Cloud Solution Architect for AWS"
-                company="Accenture PH AWS"
-                location="Philippines"
-                date="February 2019 - December 2019"
-                bullets={[
-                  "Built and developed PRU Lex Chatbot",
-                  "Participated in the development of ACCCS using ReactJS, Lambda, Laravel, Javascript and Node.js",
-                  "Developed MyEstimate DevOps Website using PHP and Javascript",
-                  "Built and developed DevOps Chatbot using Laravel Framework"
-                ]}
-                delay={0.25}
-              />
-              <TimelineItem
-                title="Backend Developer"
-                company="Cromwell Technology"
-                location="Philippines"
-                date="July 2018 - February 2019"
-                bullets={[
-                  "Developed market place website with Crypto Currency using Laravel Framework",
-                  "Technologies: PHP, Javascript, MySQL"
-                ]}
-                delay={0.3}
-              />
-            </div>
-            {/* Timeline End */}
-          </div>
-        </div>
+      <section className="bg-[#050505]" id="experience">
+        <ExperienceCarousel
+          jobs={[
+            {
+              title: "Senior Full Stack Developer",
+              company: "Softwave Development",
+              location: "USA",
+              date: "June 2026 - Present",
+              bullets: [
+                "Lead end-to-end delivery of full stack web applications and product features",
+                "Design and implement scalable frontend and backend architectures",
+                "Partner with stakeholders on technical planning, estimates, and release quality",
+              ],
+            },
+            {
+              title: "Lead AI Developer",
+              company: "Leading with Heart",
+              location: "USA",
+              date: "December 2025 - Present",
+              bullets: [
+                "Lead AI solution design and development across product initiatives",
+                "Build and integrate LLM-powered features into production workflows",
+                "Guide engineering practices, mentoring, and delivery standards for AI workstreams",
+              ],
+            },
+            {
+              title: "Senior Full Stack Developer",
+              company: "Informatics",
+              location: "Philippines",
+              date: "March 2025 - December 2025",
+              bullets: [
+                "Frontend & Backend development for the LMS",
+                "Used Laravel for Backend and React JS TypeScript for Frontend",
+                "Setup Percipio and Auth0 SSO connection",
+              ],
+            },
+            {
+              title: "Senior Software Engineer",
+              company: "Accenture Japan HUB",
+              location: "Japan",
+              date: "March 2024 - March 2025",
+              bullets: [
+                "Ticket handling on client application",
+                "Responsible for maintenance and development of client application",
+                "Leads team of Developers for PH and Japan Accenture",
+                "One of the representatives to go to Japan or the client country",
+              ],
+            },
+            {
+              title: "Senior Software Engineer",
+              company: "Accenture PH COE Search",
+              location: "Philippines",
+              date: "March 2023 - March 2024",
+              bullets: [
+                "Maintained the Rest API for the Accenture Sites Elastic Search",
+                "Developed Automation using Python for Elastic Search Validation of created indices",
+                "Handled C# automation for the Aspire Enrichment",
+                "Developed UX Design using Power Apps",
+              ],
+            },
+            {
+              title: "Senior Software Engineer / Cloud Solution Architect for Blockchain",
+              company: "Accenture PH Blockchain",
+              location: "Philippines",
+              date: "December 2019 - March 2023",
+              bullets: [
+                "Developed Blockchain Frontend side using Angular and Node.js",
+                "Certified Daml Developer Associate",
+                "Instructor for DAML Developer Training (Accenture PH)",
+                "Full stack developer for DAML backend and React JS frontend on an Agile approach",
+                "Led Front end Team with Agile Scrum",
+              ],
+            },
+            {
+              title: "Software Engineer / Cloud Solution Architect for AWS",
+              company: "Accenture PH AWS",
+              location: "Philippines",
+              date: "February 2019 - December 2019",
+              bullets: [
+                "Built and developed PRU Lex Chatbot",
+                "Participated in ACCCS development using ReactJS, Lambda, Laravel, Javascript and Node.js",
+                "Developed MyEstimate DevOps Website using PHP and Javascript",
+                "Built and developed DevOps Chatbot using Laravel Framework",
+              ],
+            },
+            {
+              title: "Backend Developer",
+              company: "Cromwell Technology",
+              location: "Philippines",
+              date: "July 2018 - February 2019",
+              bullets: [
+                "Developed marketplace website with cryptocurrency using Laravel Framework",
+                "Technologies: PHP, Javascript, MySQL",
+              ],
+            },
+          ] satisfies ExperienceItem[]}
+        />
       </section>
 
       {/* Projects Section */}
-      <section className="py-16 bg-gray-50" id="projects">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedHeading className="text-3xl font-bold mb-8 text-center">Featured Projects</AnimatedHeading>
-
-          <Tabs defaultValue="all" className="max-w-5xl mx-auto">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="frontend">Frontend</TabsTrigger>
-              <TabsTrigger value="backend">Backend</TabsTrigger>
-              <TabsTrigger value="blockchain">Blockchain</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="all" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-stretch">
-              <AnimatedProjectCard
-                title="Leading with Heart AI Coach"
-                description="AI coaching platform for managers to rehearse hard conversations and decisions — grounded in the Leading with Heart five-tenet framework, with live coaching sessions available 24/7"
-                tags={["React", "AI", "Vite", "Coaching"]}
-                image="/images/projects/leading-with-heart-ai.jpg"
-                delay={0}
-                demoUrl="https://www.leadingwithheart.ai/"
-              />
-              <AnimatedProjectCard
-                title="Leading with Heart"
-                description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
-                tags={["WordPress", "AI", "Web Platform", "Coaching"]}
-                image="/images/projects/leading-with-heart.jpg"
-                delay={0.1}
-                demoUrl="https://leadingwithheart.com/"
-              />
-              <AnimatedProjectCard
-                title="Informatics Micro Courses"
-                description="Learning platform for Informatics Micro Courses with course discovery, career pathways, and SSO — built with Laravel and React TypeScript, including Percipio and Auth0 integration"
-                tags={["React", "TypeScript", "Laravel", "Auth0", "Full Stack"]}
-                image="/images/projects/imc-informatics.jpg"
-                delay={0.2}
-                demoUrl="https://imc.informatics.edu.ph/"
-              />
-              <AnimatedProjectCard
-                title="Luxurywish PH - Sales & Inventory Management System"
-                description="A comprehensive sales and inventory management system with real-time tracking, reporting, and analytics"
-                tags={["React", "Next.js", "TypeScript", "Swagger", "Full Stack"]}
-                image="/images/projects/luxury-ph.jpg"
-                delay={0.3}
-                demoUrl="https://lwph-sims.vercel.app/"
-                githubUrl="https://github.com/jerryfel13/lwph-sims"
-              />
-              <AnimatedProjectCard
-                title="Blockchain Trading Platform"
-                description="A secure trading platform built with DAML and React"
-                tags={["React", "DAML", "Blockchain", "TypeScript"]}
-                image="/images/projects/blockchain-trading.jpg"
-                delay={0.4}
-              />
-              <AnimatedProjectCard
-                title="Elastic Search API"
-                description="REST API for Accenture Sites Elastic Search"
-                tags={["Node.js", "Elastic Search", "REST API"]}
-                image="/images/projects/elastic-search.jpg"
-                delay={0.5}
-              />
-              <AnimatedProjectCard
-                title="DevOps Chatbot"
-                description="Intelligent chatbot for DevOps automation"
-                tags={["Laravel", "PHP", "AI", "DevOps"]}
-                image="/images/projects/devops-chatbot.jpg"
-                delay={0.6}
-              />
-              <AnimatedProjectCard
-                title="Crypto Marketplace"
-                description="E-commerce platform with cryptocurrency integration"
-                tags={["Laravel", "PHP", "MySQL", "Blockchain"]}
-                image="/images/projects/crypto-marketplace.jpg"
-                delay={0.7}
-              />
-              <AnimatedProjectCard
-                title="Search Validation Tool"
-                description="Python automation for Elastic Search validation"
-                tags={["Python", "Elastic Search", "Automation"]}
-                image="/images/projects/search-validation.jpg"
-                delay={0.8}
-              />
-            </TabsContent>
-
-            <TabsContent value="frontend" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-stretch">
-              <AnimatedProjectCard
-                title="Leading with Heart AI Coach"
-                description="AI coaching platform for managers to rehearse hard conversations and decisions — grounded in the Leading with Heart five-tenet framework, with live coaching sessions available 24/7"
-                tags={["React", "AI", "Vite", "Coaching"]}
-                image="/images/projects/leading-with-heart-ai.jpg"
-                delay={0}
-                demoUrl="https://www.leadingwithheart.ai/"
-              />
-              <AnimatedProjectCard
-                title="Leading with Heart"
-                description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
-                tags={["WordPress", "AI", "Web Platform", "Coaching"]}
-                image="/images/projects/leading-with-heart.jpg"
-                delay={0.1}
-                demoUrl="https://leadingwithheart.com/"
-              />
-              <AnimatedProjectCard
-                title="Informatics Micro Courses"
-                description="Learning platform for Informatics Micro Courses with course discovery, career pathways, and SSO — built with Laravel and React TypeScript, including Percipio and Auth0 integration"
-                tags={["React", "TypeScript", "Laravel", "Auth0", "Full Stack"]}
-                image="/images/projects/imc-informatics.jpg"
-                delay={0.2}
-                demoUrl="https://imc.informatics.edu.ph/"
-              />
-              <AnimatedProjectCard
-                title="Luxurywish PH - Sales & Inventory Management System"
-                description="A comprehensive sales and inventory management system with real-time tracking, reporting, and analytics"
-                tags={["React", "Next.js", "TypeScript", "Swagger", "Full Stack"]}
-                image="/images/projects/luxury-ph.jpg"
-                delay={0.3}
-                demoUrl="https://lwph-sims.vercel.app/"
-                githubUrl="https://github.com/jerryfel13/lwph-sims"
-              />
-              <AnimatedProjectCard
-                title="Blockchain Trading Platform"
-                description="A secure trading platform built with DAML and React"
-                tags={["React", "DAML", "Blockchain", "TypeScript"]}
-                image="/images/projects/blockchain-trading.jpg"
-                delay={0.4}
-              />
-            </TabsContent>
-
-            <TabsContent value="backend" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-stretch">
-              <AnimatedProjectCard
-                title="Leading with Heart AI Coach"
-                description="AI coaching platform for managers to rehearse hard conversations and decisions — grounded in the Leading with Heart five-tenet framework, with live coaching sessions available 24/7"
-                tags={["React", "AI", "Vite", "Coaching"]}
-                image="/images/projects/leading-with-heart-ai.jpg"
-                delay={0}
-                demoUrl="https://www.leadingwithheart.ai/"
-              />
-              <AnimatedProjectCard
-                title="Leading with Heart"
-                description="Executive coaching and leadership development platform featuring the Leading with Heart framework, expert coaching services, and AI coaching tools for on-demand leadership support"
-                tags={["WordPress", "AI", "Web Platform", "Coaching"]}
-                image="/images/projects/leading-with-heart.jpg"
-                delay={0.1}
-                demoUrl="https://leadingwithheart.com/"
-              />
-              <AnimatedProjectCard
-                title="Informatics Micro Courses"
-                description="Learning platform for Informatics Micro Courses with course discovery, career pathways, and SSO — built with Laravel and React TypeScript, including Percipio and Auth0 integration"
-                tags={["React", "TypeScript", "Laravel", "Auth0", "Full Stack"]}
-                image="/images/projects/imc-informatics.jpg"
-                delay={0.2}
-                demoUrl="https://imc.informatics.edu.ph/"
-              />
-              <AnimatedProjectCard
-                title="Luxurywish PH - Sales & Inventory Management System"
-                description="A comprehensive sales and inventory management system with real-time tracking, reporting, and analytics"
-                tags={["React", "Next.js", "TypeScript", "Swagger", "Full Stack"]}
-                image="/images/projects/luxury-ph.jpg"
-                delay={0.3}
-                demoUrl="https://lwph-sims.vercel.app/"
-                githubUrl="https://github.com/jerryfel13/lwph-sims"
-              />
-              <AnimatedProjectCard
-                title="Elastic Search API"
-                description="REST API for Accenture Sites Elastic Search"
-                tags={["Node.js", "Elastic Search", "REST API"]}
-                image="/images/projects/elastic-search.jpg"
-                delay={0.4}
-              />
-              <AnimatedProjectCard
-                title="Search Validation Tool"
-                description="Python automation for Elastic Search validation"
-                tags={["Python", "Elastic Search", "Automation"]}
-                image="/images/projects/search-validation.jpg"
-                delay={0.5}
-              />
-              <AnimatedProjectCard
-                title="DevOps Chatbot"
-                description="Intelligent chatbot for DevOps automation"
-                tags={["Laravel", "PHP", "AI", "DevOps"]}
-                image="/images/projects/devops-chatbot.jpg"
-                delay={0.6}
-              />
-            </TabsContent>
-
-            <TabsContent value="blockchain" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-stretch">
-              <AnimatedProjectCard
-                title="Blockchain Trading Platform"
-                description="A secure trading platform built with DAML and React"
-                tags={["React", "DAML", "Blockchain", "TypeScript"]}
-                image="/images/projects/blockchain-trading.jpg"
-                delay={0}
-              />
-              <AnimatedProjectCard
-                title="Crypto Marketplace"
-                description="E-commerce platform with cryptocurrency integration"
-                tags={["Laravel", "PHP", "MySQL", "Blockchain"]}
-                image="/images/projects/crypto-marketplace.jpg"
-                delay={0.1}
-              />
-            </TabsContent>
-          </Tabs>
-        </div>
+      <section className="py-24 bg-[#0c0c0c]" id="projects">
+        <ProjectsGrid
+          projects={[
+            {
+              title: "Leading with Heart AI Coach",
+              description: "AI coaching platform for managers to rehearse hard conversations and decisions — grounded in the Leading with Heart five-tenet framework.",
+              category: "AI Product",
+              tools: "React, Vite, AI",
+              image: "/images/projects/leading-with-heart-ai.jpg",
+              demoUrl: "https://www.leadingwithheart.ai/",
+            },
+            {
+              title: "Leading with Heart",
+              description: "Executive coaching and leadership development platform with the Leading with Heart framework and on-demand coaching tools.",
+              category: "Web Design",
+              tools: "WordPress, AI",
+              image: "/images/projects/leading-with-heart.jpg",
+              demoUrl: "https://leadingwithheart.com/",
+            },
+            {
+              title: "Informatics Micro Courses",
+              description: "Learning platform with course discovery, career pathways, and SSO — Laravel, React TypeScript, Percipio, and Auth0.",
+              category: "Full Stack",
+              tools: "React, TypeScript, Laravel, Auth0",
+              image: "/images/projects/imc-informatics.jpg",
+              demoUrl: "https://imc.informatics.edu.ph/",
+            },
+            {
+              title: "Luxurywish PH SIMS",
+              description: "Sales and inventory management system with real-time tracking, reporting, and analytics.",
+              category: "Full Stack",
+              tools: "React, Next.js, TypeScript",
+              image: "/images/projects/luxury-ph.jpg",
+              demoUrl: "https://lwph-sims.vercel.app/",
+              githubUrl: "https://github.com/jerryfel13/lwph-sims",
+            },
+            {
+              title: "Blockchain Trading Platform",
+              description: "A secure trading platform built with DAML and React.",
+              category: "Blockchain",
+              tools: "React, DAML, TypeScript",
+              image: "/images/projects/blockchain-trading.jpg",
+            },
+            {
+              title: "Elastic Search API",
+              description: "REST API for Accenture Sites Elastic Search.",
+              category: "Backend",
+              tools: "Node.js, Elastic Search",
+              image: "/images/projects/elastic-search.jpg",
+            },
+            {
+              title: "DevOps Chatbot",
+              description: "Intelligent chatbot for DevOps automation.",
+              category: "AI",
+              tools: "Laravel, PHP, AI",
+              image: "/images/projects/devops-chatbot.jpg",
+            },
+            {
+              title: "Crypto Marketplace",
+              description: "E-commerce platform with cryptocurrency integration.",
+              category: "Blockchain",
+              tools: "Laravel, PHP, MySQL",
+              image: "/images/projects/crypto-marketplace.jpg",
+            },
+            {
+              title: "Search Validation Tool",
+              description: "Python automation for Elastic Search validation.",
+              category: "Backend",
+              tools: "Python, Elastic Search",
+              image: "/images/projects/search-validation.jpg",
+            },
+          ] satisfies ProjectItem[]}
+        />
       </section>
 
       {/* Education Section */}
-      <section className="py-16 bg-white" id="education">
+      <section className="py-24 bg-[#050505]" id="education">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedHeading className="text-3xl font-bold mb-8 text-center">Education & Certifications</AnimatedHeading>
 
@@ -1047,14 +870,14 @@ function HomeContent() {
       </section>
 
       {/* Blog/Articles Section */}
-      <section className="py-16 bg-white" id="blog">
+      <section className="py-24 bg-[#050505]" id="blog">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedHeading className="text-3xl font-bold mb-8 text-center">Latest Articles</AnimatedHeading>
           
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ScrollReveal>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                <div className="h-48 bg-[#141414] flex items-center justify-center">
                   <Code className="h-16 w-16 text-white" />
                 </div>
                 <CardContent className="p-6">
@@ -1086,7 +909,7 @@ function HomeContent() {
 
             <ScrollReveal>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center">
+                <div className="h-48 bg-[#141414] flex items-center justify-center">
                   <Server className="h-16 w-16 text-white" />
                 </div>
                 <CardContent className="p-6">
@@ -1118,7 +941,7 @@ function HomeContent() {
 
             <ScrollReveal>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                <div className="h-48 bg-[#141414] flex items-center justify-center">
                   <Database className="h-16 w-16 text-white" />
                 </div>
                 <CardContent className="p-6">
@@ -1152,9 +975,9 @@ function HomeContent() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-gray-900 text-white" id="contact">
+      <section className="py-24 bg-[#050505] text-white" id="contact">
         <div className="container mx-auto px-4 md:px-6">
-          <AnimatedHeading className="text-3xl font-bold mb-8 text-center text-white">Get In Touch</AnimatedHeading>
+          <AnimatedHeading className="text-3xl font-bold mb-8 text-center">Let&apos;s connect</AnimatedHeading>
 
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <ScrollReveal>
@@ -1201,7 +1024,7 @@ function HomeContent() {
       >
         <Button
           size="lg"
-          className="rounded-full w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 shadow-lg"
+          className="rounded-full w-14 h-14 bg-[#ff5a1f] hover:bg-[#e54e18] shadow-lg"
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
         >
           <Mail className="h-6 w-6" />
@@ -1209,7 +1032,7 @@ function HomeContent() {
       </motion.div>
 
       {/* Footer */}
-      <footer className="py-6 bg-gray-800 text-white">
+      <footer className="py-8 border-t border-white/10 bg-[#050505] text-white/70">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <p>&copy; {new Date().getFullYear()} Jerryfel Laraga. All rights reserved.</p>
           <p className="text-gray-400 mt-2">Full Stack Developer</p>
