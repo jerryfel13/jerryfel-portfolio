@@ -287,7 +287,7 @@ export function RatesClient() {
                     fellaraga@gmail.com
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/jerryfel-laraga/"
+                    href="https://www.linkedin.com/in/jerryfel-laraga-18b9b3201/"
                     target="_blank"
                     rel="noreferrer"
                     className="block transition hover:text-[#ff5a1f]"
