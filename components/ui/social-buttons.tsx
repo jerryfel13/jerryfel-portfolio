@@ -23,7 +23,7 @@ export function SocialButtons() {
           variant="outline"
           size="icon"
           className="rounded-full bg-transparent border-white/30 hover:bg-white/10 hover:text-white"
-          onClick={() => window.open('https://www.linkedin.com/in/jerryfel-laraga/', '_blank')}
+          onClick={() => window.open('https://www.linkedin.com/in/jerryfel-laraga-18b9b3201/', '_blank')}
         >
           <Linkedin className="h-5 w-5" />
           <span className="sr-only">LinkedIn</span>
