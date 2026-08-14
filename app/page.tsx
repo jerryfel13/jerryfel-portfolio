@@ -12,7 +12,6 @@ import {
   Phone,
   MapPin,
   Calendar,
-  Briefcase,
   GraduationCap,
   Code,
   Server,
@@ -34,12 +33,16 @@ import { HeroButtons } from "@/components/ui/hero-buttons"
 import { SocialButtons } from "@/components/ui/social-buttons"
 import { ProjectsGrid, type ProjectItem } from "@/components/projects-grid"
 import { ExperienceCarousel, type ExperienceItem } from "@/components/experience-carousel"
+import { GithubActivity } from "@/components/github-activity"
+import { SkillsSection } from "@/components/skills-section"
+import { AboutSection } from "@/components/about-section"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { useScroll } from "framer-motion"
 import { Typewriter } from 'react-simple-typewriter'
 import { ContactForm } from "@/components/ui/contact-form"
 import PageTransition from '@/components/PageTransition'
+import { IntroLoader } from '@/components/intro-loader'
 
 interface AnimatedProjectCardProps {
   title: string;
@@ -224,16 +227,7 @@ function AnimatedProjectCard({ title, description, tags, image, delay = 0, demoU
 }
 
 function HomeContent() {
-  // Loading state
   const [isLoading, setIsLoading] = useState(true)
-  
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
-    
-    return () => clearTimeout(timer)
-  }, [])
 
   // Scroll progress bar logic
   const [scrollY, setScrollY] = useState(0)
@@ -247,23 +241,9 @@ function HomeContent() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center"
-        >
-          <div className="w-16 h-16 border-4 border-[#ff5a1f] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-white">Loading Portfolio...</h2>
-        </motion.div>
-      </div>
-    )
-  }
-
   return (
     <main className="portfolio-dark min-h-screen bg-[#050505] text-white">
+      {isLoading && <IntroLoader onComplete={() => setIsLoading(false)} />}
       <motion.div
         className="fixed top-0 left-0 right-0 h-0.5 bg-[#ff5a1f] z-50"
         style={{ scaleX: scrollY, transformOrigin: '0%' }}
@@ -287,9 +267,22 @@ function HomeContent() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-[clamp(2.6rem,8vw,6.2rem)] font-extrabold leading-[0.9] tracking-tight text-[#ff5a1f] uppercase mb-6"
+            className="font-display text-[clamp(2rem,7vw,5.2rem)] font-extrabold leading-[0.95] tracking-tight text-[#ff5a1f] uppercase mb-6 min-h-[1.1em]"
           >
-            Full Stack Developer
+            <Typewriter
+              words={[
+                'Senior Full Stack Developer',
+                'Lead AI Developer',
+                'Blockchain Enthusiast',
+                'Cloud Solution Architect',
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -324,288 +317,13 @@ function HomeContent() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-[#050505]" id="about">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedHeading className="text-3xl font-bold mb-8 text-center">About Me</AnimatedHeading>
-          
-          <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <ScrollReveal>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Who I Am</h3>
-                <p className="text-gray-700 mb-4 text-lg leading-relaxed">
-                  I am a dedicated and experienced Software Engineer with 8 years of expertise in developing applications.
-                  My passion for coding and problem-solving has led me to contribute to various software projects,
-                  demonstrating my proficiency in designing, building, and maintaining software solutions.
-                </p>
-                <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                  With a strong foundation in software development and a commitment to staying up-to-date with the latest
-                  technologies, I am well-equipped to tackle complex challenges and deliver high-quality software solutions.
-                </p>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <MapPin className="h-5 w-5 text-gray-600 mr-3" />
-                    <span className="text-gray-700">Based in Alabang, Muntinlupa City</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Briefcase className="h-5 w-5 text-gray-600 mr-3" />
-                    <span className="text-gray-700">Open to remote opportunities</span>
-                  </div>
-                  <div className="flex items-center">
-                    <GraduationCap className="h-5 w-5 text-gray-600 mr-3" />
-                    <span className="text-gray-700">Certified DAML Developer Associate</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">What I Do</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 bg-[#ff5a1f] rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
-                      1
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Full Stack Development</h4>
-                      <p className="text-gray-600 text-sm">Building complete web applications from frontend to backend</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
-                      2
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Blockchain Solutions</h4>
-                      <p className="text-gray-600 text-sm">Developing decentralized applications with DAML and smart contracts</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
-                      3
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Cloud Architecture</h4>
-                      <p className="text-gray-600 text-sm">Designing and implementing AWS cloud solutions</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
-                      4
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">AI Development</h4>
-                      <p className="text-gray-600 text-sm">Leading AI features, LLM workflows, and intelligent product experiences</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3 mt-1">
-                      5
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Team Leadership</h4>
-                      <p className="text-gray-600 text-sm">Leading development teams and mentoring junior developers</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* GitHub Contributions & Pinned Repos Section */}
-      <section className="py-24 bg-[#050505]" id="github">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedHeading className="text-3xl font-bold mb-8 text-center">GitHub Activity</AnimatedHeading>
-          
-          <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <ScrollReveal>
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <Github className="h-8 w-8 text-gray-700 mr-3" />
-                    <h3 className="text-xl font-semibold">Contributions</h3>
-                  </div>
-                  <div className="bg-gray-100 p-4 rounded-lg">
-                    <div className="text-center text-gray-600 mb-4">
-                      <p className="text-sm font-medium">GitHub Contributions</p>
-                      <p className="text-xs mt-2">@jerryfel13</p>
-                    </div>
-                    <div className="grid grid-cols-7 gap-1">
-                      {/* Real contribution data based on your GitHub activity */}
-                      {Array.from({ length: 49 }, (_, i) => {
-                        // Simulate your actual contribution pattern
-                        const contributionLevel = Math.random() > 0.8 ? 4 : 
-                                               Math.random() > 0.6 ? 3 : 
-                                               Math.random() > 0.4 ? 2 : 
-                                               Math.random() > 0.2 ? 1 : 0;
-                        
-                        return (
-                          <div
-                            key={i}
-                            className={`h-3 rounded-sm transition-colors ${
-                              contributionLevel === 4 ? 'bg-green-600' :
-                              contributionLevel === 3 ? 'bg-green-500' :
-                              contributionLevel === 2 ? 'bg-green-400' :
-                              contributionLevel === 1 ? 'bg-green-300' :
-                              'bg-gray-200'
-                            }`}
-                            title={`${contributionLevel} contributions`}
-                          />
-                        );
-                      })}
-                    </div>
-                    <div className="mt-3 text-center">
-                      <a 
-                        href="https://github.com/jerryfel13" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                      >
-                        View Full Profile →
-                      </a>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </ScrollReveal>
-
-            <ScrollReveal>
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <Code className="h-8 w-8 text-gray-700 mr-3" />
-                    <h3 className="text-xl font-semibold">Top Languages</h3>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">JavaScript</span>
-                      <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
-                        <div className="bg-[#ff5a1f] h-2 rounded-full" style={{ width: '80%' }}></div>
-                      </div>
-                      <span className="text-sm text-gray-600">80%</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">TypeScript</span>
-                      <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
-                        <div className="bg-blue-600 h-2 rounded-full" style={{ width: '70%' }}></div>
-                      </div>
-                      <span className="text-sm text-gray-600">70%</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">React</span>
-                      <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
-                        <div className="bg-cyan-500 h-2 rounded-full" style={{ width: '65%' }}></div>
-                      </div>
-                      <span className="text-sm text-gray-600">65%</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">PHP</span>
-                      <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
-                        <div className="bg-[#ff5a1f]/60 h-2 rounded-full" style={{ width: '50%' }}></div>
-                      </div>
-                      <span className="text-sm text-gray-600">50%</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Python</span>
-                      <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
-                        <div className="bg-green-500 h-2 rounded-full" style={{ width: '35%' }}></div>
-                      </div>
-                      <span className="text-sm text-gray-600">35%</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
+      <GithubActivity />
       
       {/* Skills Section */}
-      <section className="py-24 bg-[#0c0c0c]" id="skills">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedHeading className="text-3xl font-bold mb-8 text-center">Skills</AnimatedHeading>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <StaggerItem>
-              <ScaleOnHover>
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Code className="h-8 w-8 text-gray-700 mr-3" />
-                      <h3 className="text-xl font-semibold">Frontend</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">React JS</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">Angular</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">JavaScript</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">HTML/CSS</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">Tailwind CSS</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScaleOnHover>
-            </StaggerItem>
-
-            <StaggerItem>
-              <ScaleOnHover>
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Server className="h-8 w-8 text-gray-700 mr-3" />
-                      <h3 className="text-xl font-semibold">Backend</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">Node.js</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">PHP/Laravel</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">Java/Spring Boot</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">Python</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">C#</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScaleOnHover>
-            </StaggerItem>
-
-            <StaggerItem>
-              <ScaleOnHover>
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Database className="h-8 w-8 text-gray-700 mr-3" />
-                      <h3 className="text-xl font-semibold">Database & Other</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">MySQL</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">Elastic Search</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">AWS</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">Blockchain/DAML</Badge>
-                      <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-300">DevOps</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScaleOnHover>
-            </StaggerItem>
-          </StaggerContainer>
-
-          <ScrollReveal className="mt-12 max-w-3xl mx-auto">
-            <h3 className="text-xl font-semibold mb-4 text-center">Soft Skills</h3>
-            <div className="flex flex-wrap justify-center gap-2">
-              <Badge className="bg-gray-700 hover:bg-gray-800">Empathy</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Attention to Detail</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Communication</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Problem Solving</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Quality Focus</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Teamwork</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Adaptability</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Critical Thinking</Badge>
-              <Badge className="bg-gray-700 hover:bg-gray-800">Creativity</Badge>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <SkillsSection />
 
       {/* Experience Section */}
       <section className="bg-[#050505]" id="experience">
